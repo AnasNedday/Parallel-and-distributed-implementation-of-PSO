@@ -6,7 +6,7 @@ PSO is best used to find the maximum or minimum of a function defined on a multi
 ### 3.It uses a number of particles (agents) that constitute a swarm moving around in the search space, looking for the best solution.
 ### 4.Below is a flow diagram of PSO 
 
-(!diag) [diag.png]
+![diag.png](diag.png)
 ## Types of Particle Swarm Optimization
 PSO algorithms can be of different types, even simple ones. The particles and velocities can be initiated in different ways. Update the Swarm and then set values for Pi and G and so on.
 
