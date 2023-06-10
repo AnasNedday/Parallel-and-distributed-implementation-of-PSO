@@ -14,3 +14,75 @@ PSO algorithms can be of different types, even simple ones. The particles and ve
 ### Hybrid Particle Swarm Optimization — To increase and make the optimization process better, newer and more advanced types of PSO variations are being tested and used and are an ongoing field of study. A Hybrid PSO is where a normal PSO is combined with another optimization technique which helps to make it better.
 
 ## Implementing PSO with JAVA  
+
+### Particle class
+```java
+public class Particle{
+    private double pBestfitness;
+    private double[] pBest;
+    private double[] position;
+    private double[] velocity;
+    public double[] getpBest() {
+        return pBest;
+    }
+
+    public void setpBest(double[] pBest) {
+        this.pBest = pBest;
+    }
+
+
+    public Particle(int dim) {
+        position = new double[dim];
+        pBest = new double[dim];
+        velocity = new double[dim];
+        pBestfitness = Double.MAX_VALUE;
+
+        Random random = new Random();
+        for (int i = 0; i < dim; i++) {
+            position[i] = random.nextDouble(); // Initialize position randomly in the range [0, 1]
+            velocity[i] = random.nextDouble() - 0.5; // Initialize velocity randomly in the range [-0.5, 0.5]
+        }
+```
+
+### getFitness
+```java
+ public double getfitness(double [] target) {
+        double sumOfSquares = 0.0;
+        for (int i = 0; i < position.length; i++) {
+            sumOfSquares += Math.pow(position[i] - target[i], 2);
+        }
+        return Math.sqrt(sumOfSquares);
+
+    }
+```
+### updatePBest() updatePosition() updateVelocity(double[] gBest)
+
+```java
+  public void updatePBest() {
+        double fitness = getfitness(position);
+        if (fitness < pBestfitness) {
+            System.arraycopy(position, 0, pBest, 0, position.length);
+            pBestfitness = fitness;
+        }
+    }
+```
+```java
+ public void updatePosition() {
+        for (int i = 0; i < position.length; i++) {
+            position[i] += velocity[i];
+        }
+    }
+```
+  ```java 
+  public void updateVelocity(double[] gBest) {
+        Random random = new Random();
+        for (int i = 0; i < velocity.length; i++) {
+            double r1 = random.nextDouble();
+            double r2 = random.nextDouble();
+            velocity[i] = INERTIA_WEIGHT * velocity[i] +
+                    COGNITIVE_COEFFICIENT * r1 * (pBest[i] - position[i]) +
+                    SOCIAL_COEFFICIENT * r2 * (gBest[i] - position[i]);
+        }
+    }
+    
+  ```
