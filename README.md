@@ -1,4 +1,4 @@
-# Parallel-and-distributed-implementation-of-PSO
+# Parallel and distributed implementation of PSO
 ## PSO: Particle Swarm Optimization
 PSO is best used to find the maximum or minimum of a function defined on a multidimensional vector space. Assume we have a function F(X) that produces a real value from a vector parameter (X, Y) (such as coordinate in a plane) and X can take on virtually any value in the space. The PSO algorithm will return the parameter which produces the minimum value of the function.
 ### 1.PSO is a stochastic optimization technique based on the movement and intelligence of swarms.
